@@ -1,0 +1,21 @@
+
+# Twitter Dev Info
+consumer_key: 'xxx'
+consumer_secret: 'xxx'
+access_token: 'xxx'
+access_secret: 'xxx'
+
+# Specify collection details
+start_date: '10/14/22 00:00:00'
+end_date: '10/20/22 00:00:00'
+limit_number: False
+num_tweets: 10
+search_words: 'election' 
+    # Formatting Note: 
+    #   - if you are searching for at least 1 of multiple phrases, do like this: 'abrams OR kemp'
+    #   - more search phrase formatting options here: 
+    #         https://developer.twitter.com/en/docs/twitter-api/v1/rules-and-filtering/search-operators
+
+# Give info for saving collected tweets
+save_to_csv: True
+tweet_filename: 'elec.csv'
