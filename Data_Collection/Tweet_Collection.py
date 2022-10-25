@@ -192,7 +192,6 @@ if __name__ == "__main__":
     end_date =  datetime.strptime(inputs['end_date'], '%m/%d/%y %H:%M:%S')
 
     # Specify number of tweets to collect
-    limit_number = inputs['limit_number']
     num_tweets = inputs['num_tweets']
 
     # Indicate keyword to search
