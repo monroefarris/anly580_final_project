@@ -5,15 +5,28 @@ access_token: 'xxx'
 access_secret: 'xxx'
 
 # Specify collection details
-start_date: '10/17/22 00:00:00'
-end_date: '10/24/22 00:00:00'
-num_tweets: 1000
-search_words: 'brian kemp'
-    # Formatting Note: 
-    #   - if you are searching for at least 1 of multiple phrases, do like this: 'abrams OR kemp'
-    #   - more search phrase formatting options here: 
-    #         https://developer.twitter.com/en/docs/twitter-api/v1/rules-and-filtering/search-operators
+limit_tweet_num: False
+num_tweets: 100
+# search_words: ['Georgia Governor', 
+#                'Georgia Governor Election',
+#                'GA Governor Election',
+#                'GA Gov Election',
+#                'Georgia Gov',
+#                'GA Governor',
+#                'GA Gov']
+# search_words: ['Brian Kemp',
+#                'Gov Kemp',
+#                'Gov. Kemp',
+#                'Governor Kemp',
+#                'Nominee Kemp',
+#                'Candidate Kemp',
+#                'Incumbent Kemp']
+search_words: ['Stacey Abrams',
+               'Gov Abrams',
+               'Gov. Abrams',
+               'Governor Abrams',
+               'Nominee Abrams',
+               'Candidate Abrams']
 
 # Give info for saving collected tweets
-save_to_csv: True
-tweet_filename: 'output/elec.csv'
+tweet_filename: 'output/abrams_1025.csv'

@@ -121,7 +121,7 @@ def get_tweet_data(tweet, column_names):
 
 
 ### Method for collecting tweets
-def get_tweets(search_words, date_start, date_end, num_tweets, column_names):
+def get_tweets(search_words, limit_tweet_num, num_tweets, column_names):
     
     # Create dataframe to hold the twitter data, with specified headers
     tweet_data = pd.DataFrame(columns=column_names)
@@ -130,9 +130,13 @@ def get_tweets(search_words, date_start, date_end, num_tweets, column_names):
     tweets_all = tweepy.Cursor(api.search, 
                                q=search_words + " -filter:retweets",
                                lang="en",
-                               since = date_start,
-                               until = date_end,
-                               tweet_mode='extended').items(num_tweets)
+                               tweet_mode='extended')
+    
+    # Get all tweets or limited number of tweets
+    if limit_tweet_num:
+        tweets_all = tweets_all.items(num_tweets)
+    else:
+        tweets_all = tweets_all.items()
 
     # Loop through tweets
     for tweet in tweets_all:
@@ -187,23 +191,14 @@ if __name__ == "__main__":
                     'user_statuses_count'
                     ]
 
-    # Specify start and end date of gathering tweets
-    start_date =  datetime.strptime(inputs['start_date'], '%m/%d/%y %H:%M:%S')
-    end_date =  datetime.strptime(inputs['end_date'], '%m/%d/%y %H:%M:%S')
-
-    # Specify number of tweets to collect
-    num_tweets = inputs['num_tweets']
-
-    # Indicate keyword to search
-    search_words = inputs['search_words']
+    # Get search words string for query
+    search_query = '"' + '" OR "'.join(inputs['search_words']) + '"'
 
     # Get tweets about keyword of interest
-    tweet_data = get_tweets(search_words = search_words, 
-                            date_start = start_date,
-                            date_end = end_date,
-                            num_tweets = num_tweets,
+    tweet_data = get_tweets(search_words = search_query,
+                            limit_tweet_num = inputs['limit_tweet_num'],
+                            num_tweets = inputs['num_tweets'],
                             column_names = column_names)
 
     # Export tweet data to csv file
-    if inputs['save_to_csv']:
-        tweet_data.to_csv(inputs['tweet_filename'], index = False)
+    tweet_data.to_csv(inputs['tweet_filename'], index = False)
