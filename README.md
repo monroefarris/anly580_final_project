@@ -29,5 +29,5 @@ This project seeks to investigate and gain insights into political election race
     - all figures created through analysis
 - `Project_Proposal.pdf`
     - initial proposal for project
-- `ANLY 580 Final Presentation.pdf`
+- `Final_Presentation.pdf`
     - pdf version of final powerpoint presentation for project
